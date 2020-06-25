@@ -4,33 +4,73 @@
         <h2 class="title">Flight Search</h2>
     </div>
     <div class="content">
-    
-    <form>
-    
-        <div class="form-group">
-            <label>From:</label>
-            <input [(ngModel)]="from" name="from" class="form-control">
-        </div>
-        <div class="form-group">
-            <label>To:</label>
-            <input [(ngModel)]="to" name="to" class="form-control">
-        </div>
-    
-        <div class="form-group">
-            <button 
-                (click)="search()"
-                [disabled]="!from || !to"
-                class="btn btn-default">Search</button>
-    
-    
+
+        <form #f="ngForm" roundTrip>
+
+            <div>
+                <pre>{{f?.errors | json}}</pre>
             </div>
-    </form>
-    
+
+            <div class="form-group">
+                <label>From:</label>
+                <input [(ngModel)]="from" [city]="['Graz', 'Hamburg', 'Zürich']" required minlength="3" maxlength="30" pattern="[A-Z0-9a-zöäüÖÄÜß]*" name="from" class="form-control">
+                
+                <div *ngIf="!f?.controls['from']?.valid">
+                    ... Error ...
+                    <pre>{{ f.controls['from'].errors | json }}</pre>
+                </div>
+
+                <div *ngIf="f?.controls['from']?.hasError('required')">
+                    required!
+                </div>
+
+
+                <!-- (ngModelChange)="from = $event" -->
+            </div>
+            <div class="form-group">
+                <label>To:</label>
+                <input [(ngModel)]="to" asyncCity name="to" class="form-control">
+
+                <div *ngIf="!f.controls['to'].valid">
+                    ... Unvalid ...
+                    <pre>{{f.controls['to'].errors | json}}</pre>
+                </div>
+
+                <div *ngIf="f.controls['to'].pending">
+                    <marquee>Pending. Please wait!</marquee>
+
+                </div>
+
+            </div>
+
+            <div class="form-group">
+                <button (click)="search()" [disabled]="!from || !to" class="btn btn-default">Search</button>
+
+
+            </div>
+        </form>
+
     </div>
+</div>
+
+<div class="row">
+    <div *ngFor="let f of flights">
+
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+
+            <flight-card [(selected)]="basket[f.id]" [item]="f"></flight-card>
+
+        </div>
+
+        <!--
+
+                (selectedChange)="basket[f.id] = $event"
+
+-->
     </div>
-    
-    
-    <div class="card">
+</div>
+
+<!-- <div class="card">
     
         <table class="table table-contensed" *ngIf="flights.length > 0">
             <thead>
@@ -54,12 +94,11 @@
             </tr>
         </table>
     
+    </div> -->
+
+
+<div class="card">
+    <div class="content">
+        <pre>{{ basket | json }}</pre>
     </div>
-    
-    
-    <div class="card">
-        <div class="content">
-            <pre>{{ selectedFlight | json }}</pre>
-        </div>
-    </div>
-    
+</div>

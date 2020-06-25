@@ -13,7 +13,7 @@ import { CityPipe } from './shared/city.pipe';
 import { FlightBookingModule } from './flight-booking/flight-booking.module';
 import { SharedModule } from './shared/shared.module';
 
-import { LoggerLibModule } from '@my/logger-lib';
+//import { LoggerLibModule } from '@my/logger-lib';
 
 const DEBUG = false;
 
@@ -22,7 +22,7 @@ const DEBUG = false;
       BrowserModule,
       HttpClientModule,
       FlightBookingModule,
-      LoggerLibModule,
+     // LoggerLibModule,
       SharedModule  // <flight-search></flight-search>
    ],
    declarations: [

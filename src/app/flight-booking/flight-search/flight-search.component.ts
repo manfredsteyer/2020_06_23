@@ -3,6 +3,7 @@ import { Flight } from '../../model/flight';
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { FlightService, DummyFlightService } from './flight.service';
+import { Validators } from '@angular/forms';
 
 @Component({
   selector: 'flight-search',
@@ -22,10 +23,16 @@ export class FlightSearchComponent implements OnInit {
   flights: Flight[] = [];
   selectedFlight: Flight;
 
+  basket = {
+    "3": true,
+    "5": true
+  };
+
   // private http: HttpClient
 
   constructor(private flightService: FlightService) { 
     // this.http = http;
+
   }
 
   ngOnInit(): void {
