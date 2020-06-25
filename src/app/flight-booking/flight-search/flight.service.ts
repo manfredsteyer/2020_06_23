@@ -33,7 +33,7 @@ export class DummyFlightService implements FlightService {
       { id: 17, from: 'Graz', to: 'Flagranti', date: '2020-06-23T17:00', delayed: false},
       { id: 18, from: 'Graz', to: 'Kognito', date: '2020-06-23T17:30', delayed: false},
       { id: 19, from: 'Graz', to: 'Mallorca', date: '2020-06-23T17:50', delayed: false},
-    ])
+    ]);
   }
 
 }

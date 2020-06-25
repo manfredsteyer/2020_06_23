@@ -1,0 +1,22 @@
+<h1>Flight Edit</h1>
+
+
+<form [formGroup]="formGroup">
+    <input formControlName="id">
+    <input formControlName="from">
+    <span *ngIf="!formGroup.controls['from'].valid">
+        ... Error ...
+        <pre>{{formGroup.controls['from'].errors | json }}</pre>
+    </span>
+
+    <input formControlName="to">
+    <input formControlName="date">
+
+    <div formGroupName="searchDetails">
+        <input formControlName="maxStopOvers">
+        <input formControlName="lowBudged" type="checkbox">
+    
+    </div>
+
+    <button (click)="save()">Save</button>
+</form>

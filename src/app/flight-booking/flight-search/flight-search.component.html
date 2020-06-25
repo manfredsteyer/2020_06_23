@@ -17,7 +17,7 @@
                 
                 <div *ngIf="!f?.controls['from']?.valid">
                     ... Error ...
-                    <pre>{{ f.controls['from'].errors | json }}</pre>
+                    <pre>{{ f?.controls['from']?.errors | json }}</pre>
                 </div>
 
                 <div *ngIf="f?.controls['from']?.hasError('required')">
@@ -31,12 +31,12 @@
                 <label>To:</label>
                 <input [(ngModel)]="to" asyncCity name="to" class="form-control">
 
-                <div *ngIf="!f.controls['to'].valid">
+                <div *ngIf="!f?.controls['to']?.valid">
                     ... Unvalid ...
-                    <pre>{{f.controls['to'].errors | json}}</pre>
+                    <pre>{{f?.controls['to']?.errors | json}}</pre>
                 </div>
 
-                <div *ngIf="f.controls['to'].pending">
+                <div *ngIf="f?.controls['to']?.pending">
                     <marquee>Pending. Please wait!</marquee>
 
                 </div>
@@ -52,6 +52,8 @@
 
     </div>
 </div>
+
+<app-flight-edit></app-flight-edit>
 
 <div class="row">
     <div *ngFor="let f of flights">
