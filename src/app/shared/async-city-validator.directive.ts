@@ -16,12 +16,11 @@ export class AsyncCityValidatorDirective implements AsyncValidator {
   constructor(private flightService: FlightService) { }
 
   validate(control: AbstractControl): Observable<ValidationErrors> {
-    
 
     return this.flightService.find(control.value, '').pipe(
       map(flights => flights.length > 0 ? {} : {asyncCity: true}),
-      delay(4000)
-    )
+      //delay(4000)
+    );
 
 
   }

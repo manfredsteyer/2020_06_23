@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { validateCityWithParams } from '../../shared/city-validator';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-flight-edit',
@@ -11,7 +12,27 @@ export class FlightEditComponent implements OnInit {
 
   formGroup: FormGroup;
 
-  constructor(private fb: FormBuilder) { 
+  metaData: any;
+  id: string;
+  showDetails: string;
+
+  constructor(private fb: FormBuilder, private route: ActivatedRoute) { 
+
+
+
+    this.route.params.subscribe(p => {
+      this.id = p['id'];
+      this.showDetails = p['showDetails'];
+    });
+
+
+    this.metaData = [
+      { name: 'id', label: 'Id'},
+      { name: 'from', label: 'Airport of Departure'},
+      { name: 'to', label: 'Airport of Destination'},
+      { name: 'date', label: 'Boarding Date'},
+
+    ]
 
       this.formGroup = this.fb.group({
         id: [],

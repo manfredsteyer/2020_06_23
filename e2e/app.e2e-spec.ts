@@ -1,4 +1,5 @@
 import { AppPage } from './app.po';
+import { browser } from 'protractor';
 
 describe('starter App', () => {
   let page: AppPage;
@@ -11,4 +12,5 @@ describe('starter App', () => {
     page.navigateTo();
     expect(page.getParagraphText()).toEqual('Welcome to app!');
   });
+
 });

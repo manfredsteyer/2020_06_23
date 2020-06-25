@@ -12,6 +12,11 @@ import { environment } from '../environments/environment';
 import { CityPipe } from './shared/city.pipe';
 import { FlightBookingModule } from './flight-booking/flight-booking.module';
 import { SharedModule } from './shared/shared.module';
+import { HomeComponent } from './home/home.component';
+import { AboutComponent } from './about/about.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { RouterModule } from '@angular/router';
+import { APP_ROUTES } from './app.routes';
 
 //import { LoggerLibModule } from '@my/logger-lib';
 
@@ -21,7 +26,8 @@ const DEBUG = false;
    imports: [
       BrowserModule,
       HttpClientModule,
-      FlightBookingModule,
+      // FlightBookingModule, // Would prevent Lazy Loading
+      RouterModule.forRoot(APP_ROUTES),
      // LoggerLibModule,
       SharedModule  // <flight-search></flight-search>
    ],
@@ -29,7 +35,10 @@ const DEBUG = false;
       // "Shell:"
       AppComponent,
       SidebarComponent,
-      NavbarComponent
+      NavbarComponent,
+      HomeComponent,
+      AboutComponent,
+      NotFoundComponent
    ],
    providers: [
       // { provide: FlightService, useClass: DummyFlightService }

@@ -4,6 +4,7 @@ import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { FlightService, DummyFlightService } from './flight.service';
 import { Validators } from '@angular/forms';
+import { ThrowStmt } from '@angular/compiler';
 
 @Component({
   selector: 'flight-search',
@@ -18,8 +19,8 @@ import { Validators } from '@angular/forms';
 })
 export class FlightSearchComponent implements OnInit {
 
-  from: string;
-  to: string;
+  from: string = 'G';
+  to: string ='H';
   flights: Flight[] = [];
   selectedFlight: Flight;
 
@@ -39,6 +40,12 @@ export class FlightSearchComponent implements OnInit {
   }
 
   search(): void {
+
+
+    if (!this.from || !this.to ) {
+      return;
+    }
+
     // this.flights = [
     //   { id: 17, from: 'Graz', to: 'Flagranti', date: '2020-06-23T17:00', delayed: false},
     //   { id: 18, from: 'Graz', to: 'Kognito', date: '2020-06-23T17:30', delayed: false},
