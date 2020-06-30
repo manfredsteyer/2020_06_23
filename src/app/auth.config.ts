@@ -12,10 +12,10 @@ export const authCodeFlowConfig: AuthConfig = {
  
     responseType: 'code',
 
-    scope: 'openid profile email offline_access api', // 
+    scope: 'openid profile email offline_access', // 
  
     customQueryParams: {
-        auth0Client: 'eyJuYW1lIjoiYXV0aDAtc3BhLWpzIiwidmVyc2lvbiI6IjEuMTAuMCJ9'
+        audience: 'http://www.angular.at/api'
     }
  
     // Not recommented:

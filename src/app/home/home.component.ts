@@ -35,8 +35,11 @@ export class HomeComponent implements OnInit {
   }
 
   logout(): void {
-    this.oauthService.logOut();
-    //this.oauthService.revokeTokenAndLogout();
+    //this.oauthService.logOut();
+    this.oauthService.revokeTokenAndLogout({
+      client_id: this.oauthService.clientId,
+      returnTo: this.oauthService.redirectUri
+    }, true);
   }
 
 }
