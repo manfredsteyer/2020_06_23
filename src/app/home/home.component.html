@@ -1,1 +1,15 @@
-<h1>Welcome</h1>
+<h1 *ngIf="userName">Hello {{userName}}!</h1>
+<h1 *ngIf="!userName">Hello!</h1>
+
+<div>
+    <button (click)="logout()">Logout</button>
+    <button (click)="refresh()">Refresh</button>
+</div>
+
+<pre>
+    Access Token: {{ accessToken }}
+</pre>
+
+<pre>
+    Refresh Token: {{ refreshToken }}
+</pre>

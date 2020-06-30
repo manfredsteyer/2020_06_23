@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-
+import { Component } from '@angular/core';
+import { OAuthService } from 'angular-oauth2-oidc';
+import { authCodeFlowConfig } from './auth.config';
 @Component({
   selector: 'flight-app',
   templateUrl: './app.component.html',
@@ -9,8 +9,13 @@ import { Router } from '@angular/router';
 export class AppComponent  {
   title = 'Hello World!!!!';
 
-  constructor(private router: Router) {
-    this.router.events.subscribe(event => console.debug('event', event));
-  }
+  constructor(
+    oauthService: OAuthService
+    ) {
+
+      oauthService.configure(authCodeFlowConfig);
+      oauthService.loadDiscoveryDocumentAndLogin();
+
+    }
 }
 
