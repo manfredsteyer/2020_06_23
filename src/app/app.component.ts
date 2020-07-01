@@ -14,6 +14,8 @@ export class AppComponent  {
     ) {
 
       oauthService.configure(authCodeFlowConfig);
+      oauthService.setupAutomaticSilentRefresh();
+
       oauthService.loadDiscoveryDocumentAndLogin();
 
     }
